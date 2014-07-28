@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control input-lg' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :severity %><br>
-    <%= f.select :severity, options_for_select(Incident::SEVERITY_VALUES) %>
+    <%= f.select :severity, options_for_select(Incident::SEVERITY_VALUES), {}, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :started_at %><br>
     <%= f.datetime_select :started_at %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :detected_at %><br>
     <%= f.datetime_select :detected_at %>
   </div>

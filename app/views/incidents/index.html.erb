@@ -15,7 +15,7 @@
     <% @incidents.each do |incident| %>
       <tr>
         <td><%= link_to incident.title, incident %></td>
-        <td><%= incident.severity %></td>
+        <td><%= incident_severity_label(incident) %></td>
         <td><%= incident.status %></td>
         <td><%= incident.started_at %></td>
         <td><%= incident.detected_at %></td>

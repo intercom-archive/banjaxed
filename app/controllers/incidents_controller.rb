@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update, :destroy]
+  before_action :set_incident, only: [:show, :edit, :update]
 
   def index
     @incidents = Incident.all
@@ -31,11 +31,6 @@ class IncidentsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @incident.destroy
-    redirect_to incidents_url, notice: 'Incident was successfully destroyed.'
   end
 
   private

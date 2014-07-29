@@ -1,0 +1,6 @@
+before_script:
+  - psql -c 'create database banjaxed_test;' -U postgres
+language: ruby
+rvm:
+  - 2.0.0
+script: bundle exec rspec

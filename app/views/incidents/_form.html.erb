@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :severity %><br>
-    <%= f.text_field :severity %>
+    <%= f.select :severity, options_for_select(Incident::SEVERITY_VALUES) %>
   </div>
   <div class="field">
     <%= f.label :started_at %><br>

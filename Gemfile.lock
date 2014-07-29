@@ -94,6 +94,8 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    shoulda-matchers (2.6.2)
+      activesupport (>= 3.0.0)
     spring (1.1.3)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -126,5 +128,6 @@ DEPENDENCIES
   rails (= 4.1.4)
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)
+  shoulda-matchers
   spring
   uglifier (>= 1.3.0)

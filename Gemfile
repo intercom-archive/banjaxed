@@ -10,6 +10,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 
+gem 'warden-github-rails', '~> 1.1.0'
+
 group :development do
   gem 'spring'
 end

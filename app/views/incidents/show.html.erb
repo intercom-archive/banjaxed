@@ -1,18 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @incident.title %>
-</p>
+</h1>
 
+<strong>Description:</strong>
 <p>
-  <strong>Description:</strong>
   <%= @incident.description %>
 </p>
 
 <p>
   <strong>Severity:</strong>
-  <%= @incident.severity %>
+  <%= incident_severity_label(@incident) %>
 </p>
 
 <p>
@@ -30,5 +29,4 @@
   <%= @incident.detected_at %>
 </p>
 
-<%= link_to 'Edit', edit_incident_path(@incident) %> |
-<%= link_to 'Back', incidents_path %>
+<%= link_to 'Edit', edit_incident_path(@incident), class: 'btn btn-default' %>

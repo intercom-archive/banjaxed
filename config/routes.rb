@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: redirect(path: '/incidents', status: 302)
+  github_authenticate(org: ENV['GITHUB_ORG']) do
+    root to: redirect(path: '/incidents', status: 302)
 
-  resources :incidents, except: :destroy
+    resources :incidents, except: :destroy
+  end
 end

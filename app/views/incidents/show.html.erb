@@ -32,6 +32,6 @@
 
 <h2>Comments</h2>
 
-<%= render partial: 'comment', collection: @incident.comments %>
+<%= render partial: 'comment', collection: @incident.comments.order(:id) %>
 
 <%= link_to 'New Comment', new_incident_comment_path(@incident), class: 'btn btn-default' %>

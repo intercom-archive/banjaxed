@@ -1,0 +1,23 @@
+<label>Incident:</label> <%= link_to @incident.title, @incident %>
+
+<%= form_for([@incident, @comment]) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-lg btn-primary' %>
+  </div>
+<% end %>

@@ -29,3 +29,9 @@
 </p>
 
 <%= link_to 'Edit', edit_incident_path(@incident), class: 'btn btn-default' %>
+
+<h2>Comments</h2>
+
+<%= render partial: 'comment', collection: @incident.comments %>
+
+<%= link_to 'New Comment', new_incident_comment_path(@incident), class: 'btn btn-default' %>

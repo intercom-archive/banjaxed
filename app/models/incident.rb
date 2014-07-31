@@ -6,4 +6,6 @@ class Incident < ActiveRecord::Base
   validates :description, presence: true
   validates :severity, inclusion: { in: SEVERITY_VALUES }
   validates :status, inclusion: { in: STATUS_VALUES }
+
+  has_many :comments
 end

@@ -14,6 +14,14 @@ RSpec.describe CommentsController, :type => :controller do
     FactoryGirl.create(:incident)
   }
 
+  let(:current_user) {
+    FactoryGirl.create(:user)
+  }
+
+  before(:each) {
+    allow(controller).to receive(:current_user) { current_user }
+  }
+
   describe "GET new" do
     it "assigns a new comment as @comment" do
       get :new, { incident_id: incident.to_param }

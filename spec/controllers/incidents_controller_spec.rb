@@ -14,6 +14,14 @@ RSpec.describe IncidentsController, type: :controller do
     FactoryGirl.create(:incident)
   }
 
+  let(:current_user) {
+    FactoryGirl.create(:user)
+  }
+
+  before(:each) {
+    allow(controller).to receive(:current_user) { current_user }
+  }
+
   describe "GET index" do
     it "assigns all incidents as @incidents" do
       get :index, {}

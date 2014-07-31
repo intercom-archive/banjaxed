@@ -4,6 +4,8 @@ RSpec.describe User, :type => :model do
   it { should validate_presence_of(:github_id) }
   it { should validate_uniqueness_of(:github_id) }
   it { should validate_presence_of(:github_username) }
+  it { should have_many(:incidents) }
+  it { should have_many(:comments) }
 
   describe '.create_or_update_from_github_user' do
     let(:github_user) do

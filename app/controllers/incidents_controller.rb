@@ -17,6 +17,7 @@ class IncidentsController < ApplicationController
 
   def create
     @incident = Incident.new(incident_params)
+    @incident.user = current_user
 
     if @incident.save
       redirect_to @incident, notice: 'Incident was successfully created.'

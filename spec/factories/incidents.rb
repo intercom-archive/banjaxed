@@ -3,5 +3,6 @@ FactoryGirl.define do
     title "Something is wrong"
     description "We should investigate"
     severity 'high'
+    user
   end
 end

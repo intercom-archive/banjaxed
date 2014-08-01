@@ -6,6 +6,9 @@ $(document).on("page:change", ->
   )
   commentsEl = $("#comments-container")[0]
   Comments.initComments(commentsEl) if commentsEl
+
+  $('#incident-status').change ->
+    $(this).closest('form').submit()
 )
 
 Comments =

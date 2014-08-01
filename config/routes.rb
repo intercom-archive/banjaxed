@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root to: redirect(path: '/incidents', status: 302)
 
     resources :incidents, except: :destroy do
-      resources :comments, only: [:new, :create]
+      resources :comments, only: [:new, :create, :index]
     end
   end
 end

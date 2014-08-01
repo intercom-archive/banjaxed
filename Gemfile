@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'warden-github-rails', '~> 1.1.0'
+gem 'turbolinks'
 
 group :development do
   gem 'spring'

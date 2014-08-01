@@ -10,9 +10,12 @@ RSpec.describe IncidentsController, type: :controller do
     { title: "", description: "" }
   }
 
+  let(:incident) {
+    FactoryGirl.create(:incident)
+  }
+
   describe "GET index" do
     it "assigns all incidents as @incidents" do
-      incident = Incident.create! valid_attributes
       get :index, {}
       expect(assigns(:incidents)).to eq([incident])
     end
@@ -20,7 +23,6 @@ RSpec.describe IncidentsController, type: :controller do
 
   describe "GET show" do
     it "assigns the requested incident as @incident" do
-      incident = Incident.create! valid_attributes
       get :show, { id: incident.to_param }
       expect(assigns(:incident)).to eq(incident)
     end
@@ -35,7 +37,6 @@ RSpec.describe IncidentsController, type: :controller do
 
   describe "GET edit" do
     it "assigns the requested incident as @incident" do
-      incident = Incident.create! valid_attributes
       get :edit, { id: incident.to_param }
       expect(assigns(:incident)).to eq(incident)
     end
@@ -81,20 +82,17 @@ RSpec.describe IncidentsController, type: :controller do
       }
 
       it "updates the requested incident" do
-        incident = Incident.create! valid_attributes
         put :update, { id: incident.to_param, incident: new_attributes }
         incident.reload
         expect(incident.title).to eq("NewTitle")
       end
 
       it "assigns the requested incident as @incident" do
-        incident = Incident.create! valid_attributes
         put :update, { id: incident.to_param, incident: valid_attributes }
         expect(assigns(:incident)).to eq(incident)
       end
 
       it "redirects to the incident" do
-        incident = Incident.create! valid_attributes
         put :update, { id: incident.to_param, incident: valid_attributes }
         expect(response).to redirect_to(incident)
       end
@@ -102,13 +100,11 @@ RSpec.describe IncidentsController, type: :controller do
 
     describe "with invalid params" do
       it "assigns the incident as @incident" do
-        incident = Incident.create! valid_attributes
         put :update, { id: incident.to_param, incident: invalid_attributes }
         expect(assigns(:incident)).to eq(incident)
       end
 
       it "re-renders the 'edit' template" do
-        incident = Incident.create! valid_attributes
         put :update, { id: incident.to_param, incident: invalid_attributes }
         expect(response).to render_template("edit")
       end

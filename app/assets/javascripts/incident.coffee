@@ -45,6 +45,7 @@ Comments =
     timeString = commentTime.toLocaleString()
     """
       <p>
+        <strong>#{comment.user.name}:</strong>
         #{comment.content}
         <small class="text-muted">
           (#{timeString})

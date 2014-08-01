@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
     resources :incidents, except: :destroy do
       resources :comments, only: [:new, :create, :index]
+
+      patch :status, on: :member
     end
   end
 end

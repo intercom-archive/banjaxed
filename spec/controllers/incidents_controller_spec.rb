@@ -119,4 +119,32 @@ RSpec.describe IncidentsController, type: :controller do
     end
   end
 
+  describe "PATCH status" do
+    describe "with valid params" do
+      it "updates the incident's status" do
+        patch :status, { id: incident.to_param, status: "closed" }
+        incident.reload
+        expect(incident.status).to eq("closed")
+      end
+
+      it "redirects to the incident" do
+        patch :status, { id: incident.to_param, status: "closed" }
+        expect(response).to redirect_to(incident)
+      end
+    end
+
+    describe "with invalid params" do
+      it "doesn't update the incident's status" do
+        patch :status, { id: incident.to_param, status: "bad_status" }
+        incident.reload
+        expect(incident.status).to eq("open")
+      end
+
+      it "redirects to the incident" do
+        patch :status, { id: incident.to_param, status: "bad_status" }
+        expect(response).to redirect_to(incident)
+      end
+    end
+  end
+
 end

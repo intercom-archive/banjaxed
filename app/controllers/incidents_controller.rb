@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update]
+  before_action :set_incident, only: [:show, :edit, :update, :status]
 
   def index
     @incidents = Incident.order(id: :desc)
@@ -31,6 +31,14 @@ class IncidentsController < ApplicationController
       redirect_to @incident, notice: 'Incident was successfully updated.'
     else
       render :edit
+    end
+  end
+
+  def status
+    if @incident.update(params.permit(:status))
+      redirect_to @incident, notice: 'Incident status successfully updated.'
+    else
+      redirect_to @incident, flash: { :error => 'Incident status could not be updated!' }
     end
   end
 

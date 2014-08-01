@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     after_id = params[:after_id]
     query = @incident.comments
     query = query.where(id: (after_id.to_i + 1)..Float::INFINITY).order(:id) if after_id
-    render json: query
+    render json: query, include: :user
   end
 
   def new
@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @incident.comments.new(comment_params)
+    @comment.user = current_user
 
     if @comment.save
       redirect_to @incident, notice: 'Comment was successfully created.'

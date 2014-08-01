@@ -6,3 +6,7 @@ Warden::GitHub::Rails.setup do |config|
 
   config.default_scope = :user
 end
+
+Warden::Manager.prepend_after_authentication do |user, _, _|
+  User.create_or_update_from_github_user(user)
+end

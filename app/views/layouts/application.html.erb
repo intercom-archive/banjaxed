@@ -20,6 +20,15 @@
       </button>
       <a class="navbar-brand" href="/">Banjaxed</a>
     </div>
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://github.com/<%= current_user.github_username %>">
+            <%= user_gravatar(current_user, 40) %>
+          </a>
+        </li>
+      </ul>
+    <% end %>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><%= link_to "Incidents", incidents_path %></li>

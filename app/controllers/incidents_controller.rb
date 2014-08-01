@@ -2,7 +2,7 @@ class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update]
 
   def index
-    @incidents = Incident.all
+    @incidents = Incident.order(id: :desc)
   end
 
   def show

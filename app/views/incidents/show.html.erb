@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>
+  <span class="text-muted lead">#<%= @incident.id %></span>
   <%= @incident.title %>
 </h1>
 
@@ -30,8 +31,14 @@
 
 <%= link_to 'Edit', edit_incident_path(@incident), class: 'btn btn-default' %>
 
-<h2>Comments</h2>
+<div id="comments-container" data-incident-id="<%= @incident.id %>">
+  <header>
+    <h2>Comments <small>(Live updating)</small></h2>
+    <%= render 'loader' %>
+  </header>
 
-<%= render partial: 'comment', collection: @incident.comments.order(:id) %>
+  <div id="comments-list"></div>
+  <h4 class="text-danger hidden">Error loading new comments</h4>
 
-<%= link_to 'New Comment', new_incident_comment_path(@incident), class: 'btn btn-default' %>
+  <%= link_to 'New Comment', new_incident_comment_path(@incident), class: 'btn btn-default' %>
+</div>

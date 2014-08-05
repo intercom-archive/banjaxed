@@ -6,6 +6,7 @@ class IncidentsController < ApplicationController
   end
 
   def show
+    @comment = @incident.comments.new
   end
 
   def new

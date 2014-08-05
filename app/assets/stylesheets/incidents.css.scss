@@ -10,6 +10,15 @@
       vertical-align: top;
     }
   }
+  .panel {
+    margin-bottom: 4px;
+    .panel-heading {
+      padding: 0 7px;
+    }
+    .panel-body {
+      padding: 7px;
+    }
+  }
 }
 
 .spinner-wave {

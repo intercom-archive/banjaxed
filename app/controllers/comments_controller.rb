@@ -2,14 +2,11 @@ class CommentsController < ApplicationController
   before_action :set_incident
 
   def index
-    after_id = params[:after_id]
     query = @incident.comments
+    after_id = params[:after_id]
     query = query.where(id: (after_id.to_i + 1)..Float::INFINITY) if after_id
-    render json: query.order(:id), include: :user
-  end
 
-  def new
-    @comment = @incident.comments.new
+    render json: query.order(:id), include: :user
   end
 
   def create
@@ -17,9 +14,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @incident, notice: 'Comment was successfully created.'
+      head :ok
     else
-      render :new
+      head :unprocessable_entity
     end
   end
 

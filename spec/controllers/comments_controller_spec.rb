@@ -50,7 +50,7 @@ RSpec.describe CommentsController, :type => :controller do
 
       it "re-renders the 'new' template" do
         post :create, { incident_id: incident.to_param, comment: invalid_attributes }
-        expect(response).not_to be_success
+        expect(response).to be_client_error
       end
     end
   end

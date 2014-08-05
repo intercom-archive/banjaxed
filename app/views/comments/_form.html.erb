@@ -1,6 +1,4 @@
-<label>Incident:</label> <%= link_to @incident.title, @incident %>
-
-<%= form_for([@incident, @comment]) do |f| %>
+<%= form_for([@incident, @comment], remote: true) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -13,11 +11,13 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :content %><br>
-    <%= f.text_area :content, class: 'form-control' %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: 'btn btn-lg btn-primary' %>
+  <div class="row">
+    <div class="form-group col-md-7">
+      <%= f.text_area :content, class: 'form-control', placeholder: random_quote, rows: 3 %>
+    </div>
+    <div class="actions col-md-2">
+      <%= f.submit class: 'btn btn-lg btn-primary' %>
+    </div>
+    
   </div>
 <% end %>

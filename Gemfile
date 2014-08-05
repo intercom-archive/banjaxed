@@ -15,6 +15,7 @@ gem 'turbolinks'
 
 group :development do
   gem 'spring'
+  gem 'puma'
 end
 
 group :development, :test do

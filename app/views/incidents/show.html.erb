@@ -42,10 +42,11 @@
   <header>
     <h2>Comments <small>(Live updating)</small></h2>
     <%= render 'loader' %>
+    <button class="pull-right go-to-add-comment hidden btn btn-default">Add comment</button>
   </header>
 
   <div id="comments-list"></div>
-  <h4 class="text-danger hidden">Error loading new comments</h4>
+  <h4 class="text-danger hidden">Comments Error!</h4>
 
-  <%= link_to 'New Comment', new_incident_comment_path(@incident), class: 'btn btn-default' %>
+  <%= render 'comments/form' %>
 </div>

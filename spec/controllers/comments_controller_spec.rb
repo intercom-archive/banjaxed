@@ -36,7 +36,7 @@ RSpec.describe CommentsController, :type => :controller do
         expect(assigns(:comment)).to be_persisted
       end
 
-      it "redirects to the incident view" do
+      it "gives a 2xx response" do
         post :create, { incident_id: incident.to_param, comment: valid_attributes }
         expect(response).to be_success
       end
@@ -48,7 +48,7 @@ RSpec.describe CommentsController, :type => :controller do
         expect(assigns(:comment)).to be_a_new(Comment)
       end
 
-      it "re-renders the 'new' template" do
+      it "gives a 4xx response" do
         post :create, { incident_id: incident.to_param, comment: invalid_attributes }
         expect(response).to be_client_error
       end

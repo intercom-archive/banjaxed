@@ -56,6 +56,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    hashie (3.2.0)
     hike (1.2.3)
     i18n (0.6.11)
     jquery-rails (3.1.1)
@@ -128,6 +129,10 @@ GEM
     sawyer (0.5.4)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
+    sentry-raven (0.9.4)
+      faraday (>= 0.7.6)
+      hashie (>= 1.1.0)
+      uuidtools
     shoulda-matchers (2.6.2)
       activesupport (>= 3.0.0)
     simplecov (0.8.2)
@@ -161,6 +166,7 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
     warden-github (1.0.1)
@@ -185,6 +191,7 @@ DEPENDENCIES
   rails_12factor
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)
+  sentry-raven
   shoulda-matchers
   simplecov
   spring

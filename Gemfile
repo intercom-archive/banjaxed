@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'warden-github-rails', '~> 1.1.0'
+gem 'sentry-raven'
 
 group :development do
   gem 'spring'

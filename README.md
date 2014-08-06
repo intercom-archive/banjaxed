@@ -1,4 +1,4 @@
-# Banjaxed
+# Banjaxed [![Build Status](https://travis-ci.org/intercom/banjaxed.svg?branch=master)](https://travis-ci.org/intercom/banjaxed) [![Code Climate](https://codeclimate.com/github/intercom/banjaxed.png)](https://codeclimate.com/github/intercom/banjaxed)
 
 Banjaxed is an incident management tool.
 

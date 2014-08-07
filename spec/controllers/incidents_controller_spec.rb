@@ -34,6 +34,11 @@ RSpec.describe IncidentsController, type: :controller do
       get :show, { id: incident.to_param }
       expect(assigns(:incident)).to eq(incident)
     end
+
+    it "assigns a new comment as @comment" do
+      get :show, { id: incident.to_param }
+      expect(assigns(:comment)).to be_a_new(Comment)
+    end
   end
 
   describe "GET new" do

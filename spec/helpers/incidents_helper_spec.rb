@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe IncidentsHelper, type: :helper do
   describe '#incident_severity_label' do
     context "with a known severity" do
-      let(:incident) { incident = Incident.new(severity: 'critical') }
+      let(:incident) { Incident.new(severity: 'critical') }
       subject(:label_html) { helper.incident_severity_label(incident) }
 
       it "outputs the severity in uppercase" do

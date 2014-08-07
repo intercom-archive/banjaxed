@@ -23,9 +23,29 @@ RSpec.describe IncidentsController, type: :controller do
   }
 
   describe "GET index" do
-    it "assigns all incidents as @incidents" do
-      get :index, {}
-      expect(assigns(:incidents)).to eq([incident])
+    let!(:closed_incident) {
+      FactoryGirl.create(:incident, status: 'closed')
+    }
+
+    context "with no status parameter" do
+      it "assigns all incidents as @incidents" do
+        get :index, {}
+        expect(assigns(:incidents)).to eq([incident, closed_incident])
+      end
+    end
+
+    context "with a closed status parameter" do
+      it "assigns only closed incidents as @incidents" do
+        get :index, { status: 'closed' }
+        expect(assigns(:incidents)).to eq([closed_incident])
+      end
+    end
+
+    context "with an invalid status parameter" do
+      it "ignores the status parameter and assigns all incidents as @incidents" do
+        get :index, { status: 'something' }
+        expect(assigns(:incidents)).to eq([incident, closed_incident])
+      end
     end
   end
 

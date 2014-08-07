@@ -1,4 +1,11 @@
-<h1>Listing incidents</h1>
+<h1 class="pull-left">Listing incidents</h1>
+
+<ul id="incident-status-switcher" class="nav nav-pills pull-right">
+  <% Incident::STATUS_VALUES.each do |status| %>
+    <%= incident_status_switcher_item(status, status.capitalize, params[:status]) %>
+  <% end %>
+  <%= incident_status_switcher_item(nil, "All", params[:status]) %>
+</ul>
 
 <table class="table table-striped">
   <thead>

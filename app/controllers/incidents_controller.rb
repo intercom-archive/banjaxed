@@ -3,6 +3,10 @@ class IncidentsController < ApplicationController
 
   def index
     @incidents = Incident.order(id: :desc)
+
+    if params.key?(:status) && Incident::STATUS_VALUES.include?(params[:status])
+      @incidents = @incidents.where(status: params[:status])
+    end
   end
 
   def show

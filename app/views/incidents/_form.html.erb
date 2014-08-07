@@ -21,7 +21,7 @@
   </div>
   <div class="form-group">
     <%= f.label :severity %><br>
-    <%= f.select :severity, options_for_select(Incident::SEVERITY_VALUES), {}, class: 'form-control' %>
+    <%= f.select :severity, options_for_select(Incident::SEVERITY_VALUES, @incident.severity), {}, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :started_at %><br>

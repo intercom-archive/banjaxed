@@ -5,9 +5,7 @@
   <%= @incident.title %>
 </h1>
 
-<p class="lead">
-  <%= @incident.description %>
-</p>
+<%= simple_format(@incident.description, class: 'lead') %>
 
 <p>
   <strong>Severity:</strong>

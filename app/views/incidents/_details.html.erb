@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Incident details
+  </div>
+
+  <div class="panel-body">
+    <%= form_tag(status_incident_path, method: :patch, class: 'form-inline') do |f| %>
+      <%= label_tag :status, "Status:" %>
+      <%= select_tag :status, options_for_select(Incident::STATUS_VALUES, incident.status), id: 'incident-status', class: 'form-control' %>
+    <% end %>
+
+    <br>
+
+    <p>
+      <strong>Opened by:</strong>
+      <%= incident.user.name %>
+    </p>
+
+    <p>
+      <strong>Started at:</strong>
+      <%= incident.started_at %>
+    </p>
+
+    <p>
+      <strong>Detected at:</strong>
+      <%= incident.detected_at %>
+    </p>
+
+  </div>
+</div>

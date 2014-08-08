@@ -6,31 +6,17 @@
   <%= @incident.title %>
 </h1>
 
-<%= simple_format(@incident.description, class: 'lead') %>
+<div class="row">
+  <div class="col-md-8">
+    <%= simple_format(@incident.description, class: 'lead') %>
 
-<p>
-  <%= form_tag(status_incident_path, method: :patch, class: 'form-inline') do |f| %>
-    <%= label_tag :status, "Status:" %>
-    <%= select_tag :status, options_for_select(Incident::STATUS_VALUES, @incident.status), id: 'incident-status', class: 'form-control' %>
-  <% end %>
-</p>
+    <%= link_to 'Edit', edit_incident_path(@incident), class: 'btn btn-default' %>
+  </div>
 
-<p>
-  <strong>Opened by:</strong>
-  <%= @incident.user.name %>
-</p>
-
-<p>
-  <strong>Started at:</strong>
-  <%= @incident.started_at %>
-</p>
-
-<p>
-  <strong>Detected at:</strong>
-  <%= @incident.detected_at %>
-</p>
-
-<%= link_to 'Edit', edit_incident_path(@incident), class: 'btn btn-default' %>
+  <div class="col-md-4">
+    <%= render partial: 'details', locals: { incident: @incident } %>
+  </div>
+</div>
 
 <div id="comments-container" data-incident-id="<%= @incident.id %>">
   <header>

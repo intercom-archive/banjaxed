@@ -2,15 +2,11 @@
 
 <h1>
   <span class="text-muted">#<%= @incident.id %></span>
+  <%= incident_severity_label(@incident) %>
   <%= @incident.title %>
 </h1>
 
 <%= simple_format(@incident.description, class: 'lead') %>
-
-<p>
-  <strong>Severity:</strong>
-  <%= incident_severity_label(@incident) %>
-</p>
 
 <p>
   <%= form_tag(status_incident_path, method: :patch, class: 'form-inline') do |f| %>

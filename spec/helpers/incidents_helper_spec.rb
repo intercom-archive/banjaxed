@@ -70,4 +70,30 @@ RSpec.describe IncidentsHelper, type: :helper do
       end
     end
   end
+
+  describe "#incident_user_name" do
+    subject(:incident_user_name) { helper.incident_user_name(incident) }
+
+    let(:incident) { FactoryGirl.create(:incident, user: user) }
+
+    let(:user) do
+      FactoryGirl.create(:user, github_username: 'gh_user', name: name)
+    end
+
+    context "when the user has a name set" do
+      let(:name) { "my_name" }
+
+      it "returns the user's name" do
+        expect(incident_user_name).to eq("my_name")
+      end
+    end
+
+    context "when the user has no name set" do
+      let(:name) { nil }
+
+      it "returns the user's GitHub username" do
+        expect(incident_user_name).to eq("gh_user")
+      end
+    end
+  end
 end

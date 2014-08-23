@@ -16,4 +16,8 @@ module IncidentsHelper
       link_to label, incidents_path(status: status)
     end
   end
+
+  def incident_user_name(incident)
+    incident.user.name || incident.user.github_username
+  end
 end

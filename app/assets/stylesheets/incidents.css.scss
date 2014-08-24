@@ -2,6 +2,14 @@
    margin-top: 20px;
 }
 
+.incident-description {
+  word-wrap: break-word;
+}
+
+.comment-content {
+  word-wrap: break-word;
+}
+
 .new_incident, .edit_incident {
   max-width: 600px;
 }

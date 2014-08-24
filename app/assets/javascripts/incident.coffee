@@ -74,7 +74,7 @@ class CommentsList
           #{comment.user.name}
           <span class="pull-right text-muted">#{timeString}</span>
         </small></div>
-        <div class="panel-body">#{commentContent}</div>
+        <div class="panel-body comment-content">#{commentContent}</div>
       </div>
     """
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CommentsController, :type => :controller do
+RSpec.describe CommentsController, type: :controller do
 
   let(:valid_attributes) {
     { content: "MyContent" }

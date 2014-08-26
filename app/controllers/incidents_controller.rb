@@ -43,7 +43,7 @@ class IncidentsController < ApplicationController
     if @incident.update(params.permit(:status))
       redirect_to @incident, notice: 'Incident status successfully updated.'
     else
-      redirect_to @incident, flash: { :error => 'Incident status could not be updated!' }
+      redirect_to @incident, flash: { error: 'Incident status could not be updated!' }
     end
   end
 

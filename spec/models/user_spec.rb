@@ -33,7 +33,9 @@ RSpec.describe User, type: :model do
     end
 
     context "with an existing user" do
-      let!(:existing_user) { FactoryGirl.create(:user, github_id: 1) }
+      let!(:existing_user) do
+        FactoryGirl.create(:user, github_id: 1, github_username: 'old_user')
+      end
 
       it "doesn't create a new user" do
         expect {
@@ -44,6 +46,11 @@ RSpec.describe User, type: :model do
       it "returns the existing user" do
         user = User.create_or_update_from_github_user(github_user)
         expect(user).to eq(existing_user)
+      end
+
+      it "updates the user's attributes" do
+        user = User.create_or_update_from_github_user(github_user)
+        expect(user.github_username).to eq('some_user')
       end
     end
   end

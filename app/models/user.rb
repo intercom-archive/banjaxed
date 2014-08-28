@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def self.create_or_update_from_github_user(github_user)
-    self.where(github_id: github_user.id).first_or_create!(
-      github_username: github_user.login,
-      name: github_user.name,
-      gravatar_hash: github_user.gravatar_id
-    )
+    self.find_or_initialize_by(github_id: github_user.id).tap do |user|
+      user.update!(
+        github_username: github_user.login,
+        name: github_user.name,
+        gravatar_hash: github_user.gravatar_id
+      )
+    end
   end
 end

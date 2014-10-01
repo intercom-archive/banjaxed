@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
       user.update!(
         github_username: github_user.login,
         name: github_user.name,
-        gravatar_hash: github_user.gravatar_id
+        avatar_url: github_user.avatar_url
       )
     end
   end

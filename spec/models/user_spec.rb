@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
 
   describe '.create_or_update_from_github_user' do
     let(:github_user) do
-      double(id: 1, login: 'some_user', name: 'some_name', gravatar_id: 'some_hash')
+      double(id: 1, login: 'some_user', name: 'some_name', avatar_url: '//some_url')
     end
 
     context "without an existing user" do
@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
         new_user = User.create_or_update_from_github_user(github_user)
         expect(new_user.github_username).to eq(github_user.login)
         expect(new_user.name).to eq(github_user.name)
-        expect(new_user.gravatar_hash).to eq(github_user.gravatar_id)
+        expect(new_user.avatar_url).to eq(github_user.avatar_url)
       end
     end
 

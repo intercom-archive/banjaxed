@@ -39,3 +39,18 @@ heroku apps:open
 Obviously, you'll want to use actual valid GitHub application details.
 
 The GitHub application's callback URL will need to be updated to match the Heroku app.
+
+
+# Screenshots
+
+### Listing all incidents:
+
+![banjaxed_index](https://cloud.githubusercontent.com/assets/432189/4662923/e3adcc62-5536-11e4-8553-adcdbd6e38ad.png)
+
+### Viewing an incident:
+
+![banjaxed_show](https://cloud.githubusercontent.com/assets/432189/4662925/e3cf2ede-5536-11e4-85ec-ba76abc45854.png)
+
+### Creating a new incident:
+
+![banjaxed_new](https://cloud.githubusercontent.com/assets/432189/4662924/e3c8e204-5536-11e4-96be-b85bda235a2b.png)

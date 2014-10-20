@@ -1,0 +1,26 @@
+{
+    "name": "Banjaxed",
+    "description": "Banjaxed is an incident management tool by Intercom",
+    "keywords": ["incident management", "SEV", "GitHub oAuth", "Intercom"],
+    "website": "https://github.com/intercom/banjaxed",
+    "repository": "https://github.com/intercom/banjaxed.git",
+    "success_url": "/",
+    "env": {
+        "GITHUB_CLIENT_ID": {
+            "description": "GitHub OAuth client ID to use for authentication."
+        },
+        "GITHUB_CLIENT_SECRET": {
+            "description" : "GitHub OAuth client secret to use for authentication."
+        },
+        "GITHUB_ORG": {
+            "description" : "Only members of this GitHub organisation will have access."
+        }
+    },
+    "addons" : [
+        "heroku-postgresql:hobby-basic"
+    ],
+    "scripts": {
+        "postdeploy": "rake db:schema:load"
+    }
+}
+

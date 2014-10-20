@@ -23,6 +23,8 @@ It is configured to use Postgres by default, but should work with any Active Rec
 
 ## On Heroku
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 Here's how you could deploy Banjaxed on Heroku from the command line:
 
 ```

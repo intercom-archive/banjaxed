@@ -21,7 +21,7 @@
       <a class="navbar-brand" href="/">Banjaxed</a>
     </div>
     <% if user_signed_in? %>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right hidden-xs">
         <li>
           <a href="https://github.com/<%= current_user.github_username %>">
             <%= user_avatar(current_user, 40) %>

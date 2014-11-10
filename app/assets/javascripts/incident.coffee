@@ -18,7 +18,7 @@ class CommentsList
     @el = $(el)
     @incidentId = @el.data('incident-id')
     return unless @incidentId
-    @loadNewComments()
+
     @commentPollInterval = setInterval ->
       self.loadNewComments()
     , 8000

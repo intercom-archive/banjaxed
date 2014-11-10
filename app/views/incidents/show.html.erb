@@ -25,7 +25,12 @@
     <button class="pull-right go-to-add-comment hidden btn btn-default">Add comment</button>
   </header>
 
-  <div id="comments-list"></div>
+  <div id="comments-list">
+    <% @incident.comments.order(:id).each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  </div>
+
   <h4 class="text-danger hidden">Comments Error!</h4>
 
   <%= render 'comments/form' %>

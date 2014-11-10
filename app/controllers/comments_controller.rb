@@ -2,11 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_incident
 
   def index
-    query = @incident.comments
-    after_id = params[:after_id]
-    query = query.where(id: (after_id.to_i + 1)..Float::INFINITY) if after_id
-
-    render json: query.order(:id), include: :user
+    @comments = @incident.comments.since(params[:after_id]).order(:id)
   end
 
   def create

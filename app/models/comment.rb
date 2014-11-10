@@ -5,4 +5,6 @@ class Comment < ActiveRecord::Base
 
   belongs_to :incident
   belongs_to :user
+
+  scope :since, ->(id) { where(id: (id.to_i + 1)..Float::INFINITY) }
 end

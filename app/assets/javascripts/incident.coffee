@@ -18,7 +18,7 @@ class CommentsList
     @el = $(el)
     @incidentId = @el.data('incident-id')
     return unless @incidentId
-    @loadNewComments()
+
     @commentPollInterval = setInterval ->
       self.loadNewComments()
     , 8000
@@ -40,43 +40,21 @@ class CommentsList
   leave: ->
     clearInterval(@commentPollInterval)
 
+  lastCommentId: ->
+    $('#comments-list').children().last().data('comment-id')
+
   loadNewComments: ->
     self = this
     self.changeLoadingStatus(true)
-    params = {}
-    params.after_id = @lastId if @lastId
-    $.getJSON("/incidents/#{@incidentId}/comments.json", params, (comments) ->
-      lastComment = comments[comments.length - 1]
-      self.lastId = lastComment.id if lastComment
-      $.each(comments, ->
-        self.appendComment(@)
-      )
-      if comments.length
-        $('.go-to-add-comment').removeClass('hidden')
-      
+    params = { after_id: @lastCommentId() }
+    $.get("/incidents/#{@incidentId}/comments.js", params, (data) ->
       self.changeErrorStatus(false)
+      self.updateCommentButtonVisibility()
     ).fail( ->
       self.changeErrorStatus(true)
     ).always( ->
       self.changeLoadingStatus(false)
     )
-
-  appendComment: (comment) ->
-    @el.find('#comments-list').append(@commentHTML(comment))
-
-  commentHTML: (comment) ->
-    commentTime = new Date(comment.created_at)
-    timeString = commentTime.toLocaleString()
-    commentContent = comment.content.split("\n").join("<br />")
-    """
-      <div class="panel panel-default">
-        <div class="panel-heading"><small>
-          #{comment.user.name}
-          <span class="pull-right text-muted">#{timeString}</span>
-        </small></div>
-        <div class="panel-body comment-content">#{commentContent}</div>
-      </div>
-    """
 
   changeLoadingStatus: (status) ->
     loader = @el.find('.spinner-wave')
@@ -86,3 +64,6 @@ class CommentsList
     errorMessage = @el.find('h4.text-danger')
     errorMessage[(if status then 'removeClass' else 'addClass')]('hidden')
 
+  updateCommentButtonVisibility: ->
+    if $('#comments-list').children().length
+      $('.go-to-add-comment').removeClass('hidden')

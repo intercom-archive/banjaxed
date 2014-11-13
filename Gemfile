@@ -13,6 +13,11 @@ gem 'bootstrap-sass', '~> 3.3.0'
 gem 'warden-github-rails', '~> 1.1.0'
 gem 'sentry-raven'
 
+gem 'html-pipeline', require: 'html/pipeline'
+gem 'github-markdown', '~> 0.5', require: false
+gem 'sanitize', '~> 2.0', require: false
+gem 'rinku', '~> 1.7', require: false
+
 group :development do
   gem 'spring'
   gem 'puma'

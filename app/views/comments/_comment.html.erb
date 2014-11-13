@@ -4,5 +4,5 @@
     <%= comment.user.name %>
     <span class="pull-right text-muted"><%= comment.created_at %></span>
   </div>
-  <div class="panel-body"><%= simple_format(comment.content) %></div>
+  <div class="panel-body"><%= render_user_content(comment.content) %></div>
 </div>

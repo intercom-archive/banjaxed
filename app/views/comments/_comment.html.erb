@@ -1,7 +1,8 @@
 <div class="panel panel-default" data-comment-id="<%= comment.id %>">
-  <div class="panel-heading"><small>
+  <div class="panel-heading">
+    <%= user_avatar(comment.user, 25) %>
     <%= comment.user.name %>
     <span class="pull-right text-muted"><%= comment.created_at %></span>
-  </small></div>
+  </div>
   <div class="panel-body"><%= simple_format(comment.content) %></div>
 </div>

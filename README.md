@@ -31,7 +31,7 @@ Here's how you could deploy Banjaxed on Heroku from the command line:
 git clone git@github.com:intercom/banjaxed.git
 cd banjaxed
 heroku apps:create
-heroku addons:add heroku-postgresql:hobby-basic
+heroku addons:add heroku-postgresql
 heroku config:set GITHUB_CLIENT_ID=x GITHUB_CLIENT_SECRET=y GITHUB_ORG=z
 git push heroku
 heroku run rake db:migrate

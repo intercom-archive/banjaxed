@@ -20,7 +20,7 @@
         "heroku-postgresql:hobby-basic"
     ],
     "scripts": {
-        "postdeploy": "rake db:schema:load"
+        "postdeploy": "rake db:migrate"
     }
 }
 

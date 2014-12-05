@@ -34,7 +34,7 @@ heroku apps:create
 heroku addons:add heroku-postgresql:hobby-basic
 heroku config:set GITHUB_CLIENT_ID=x GITHUB_CLIENT_SECRET=y GITHUB_ORG=z
 git push heroku
-heroku run rake db:schema:load
+heroku run rake db:migrate
 heroku apps:open
 ```
 

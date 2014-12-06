@@ -17,3 +17,6 @@
 
 # Ignore code coverage reports.
 /coverage
+
+# Ignore development environment variables.
+.env

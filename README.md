@@ -14,6 +14,17 @@ GitHub OAuth is used to authenticate users. You'll need to [register an applicat
 | GITHUB_ORG           | Only members of this GitHub organisation will have access. |
 
 
+## Dotenv
+
+In development you can set these environment variables with [dotenv](https://github.com/bkeepers/dotenv), by creating a `.env` file in the root of the project:
+
+```
+export GITHUB_CLIENT_ID=myid
+export GITHUB_CLIENT_SECRET=mysecret
+export GITHUB_ORG=myorg
+```
+
+
 # Deployment
 
 Banjaxed is a simple Rails app and should be relatively straightforward to deploy.

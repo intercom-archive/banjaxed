@@ -7,6 +7,17 @@ class IncidentsController < ApplicationController
     if params.key?(:status) && Incident::STATUS_VALUES.include?(params[:status])
       @incidents = @incidents.where(status: params[:status])
     end
+
+    respond_to do |format|
+      format.html { render :layout => true }
+      format.atom {
+        @updated = last_updated(@incidents)
+        render :layout => false
+      }
+
+      # RSS feed permanently redirected to the ATOM feed
+      format.rss { redirect_to incidents_url(:format => :atom), :status => :moved_permanently }
+    end
   end
 
   def show
@@ -54,5 +65,13 @@ class IncidentsController < ApplicationController
 
     def incident_params
       params.require(:incident).permit(:title, :description, :severity, :status, :started_at, :detected_at)
+    end
+
+    def last_updated(incidents)
+      updated_at = incidents.first.updated_at
+      incidents.each do |incident|
+        updated_at = incident.updated_at if incident.updated_at > updated_at
+      end
+      updated_at
     end
 end

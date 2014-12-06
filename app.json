@@ -10,17 +10,17 @@
             "description": "GitHub OAuth client ID to use for authentication."
         },
         "GITHUB_CLIENT_SECRET": {
-            "description" : "GitHub OAuth client secret to use for authentication."
+            "description": "GitHub OAuth client secret to use for authentication."
         },
         "GITHUB_ORG": {
-            "description" : "Only members of this GitHub organisation will have access."
+            "description": "Only members of this GitHub organisation will have access.",
+            "required": false
         }
     },
-    "addons" : [
+    "addons": [
         "heroku-postgresql"
     ],
     "scripts": {
         "postdeploy": "rake db:migrate"
     }
 }
-

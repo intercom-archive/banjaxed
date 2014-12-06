@@ -7,11 +7,13 @@ Banjaxed is an incident management tool.
 
 GitHub OAuth is used to authenticate users. You'll need to [register an application](https://github.com/settings/applications/new) and make the details available as environment variables, as well as the organisation to use to restrict access.
 
-| Name                 | Purpose                                                    |
-| -------------------- | ---------------------------------------------------------- |
-| GITHUB_CLIENT_ID     | GitHub OAuth client ID to use for authentication.          |
-| GITHUB_CLIENT_SECRET | GitHub OAuth client secret to use for authentication.      |
-| GITHUB_ORG           | Only members of this GitHub organisation will have access. |
+| Name                 | Purpose                                                    | Required? |
+| -------------------- | ---------------------------------------------------------- | --------- |
+| GITHUB_CLIENT_ID     | GitHub OAuth client ID to use for authentication.          | Yes       |
+| GITHUB_CLIENT_SECRET | GitHub OAuth client secret to use for authentication.      | Yes       |
+| GITHUB_ORG           | Only members of this GitHub organisation will have access. | No        |
+
+If you don't specify a GitHub organisation, any authenticated GitHub user will have access.
 
 
 ## Dotenv

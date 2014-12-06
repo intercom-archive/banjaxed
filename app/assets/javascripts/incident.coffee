@@ -35,7 +35,15 @@ class CommentsList
       body = $('body')
       body.scrollTop(body.height())
       self.el.find('textarea').focus()
-      
+
+    $("body").on("click", ".go-to-edit-comment", ->
+      commentPanel = $(this).closest('.panel')
+      commentBody = $('.panel-body', commentPanel)
+      commentId = commentPanel.attr('data-comment-id')
+      $.get("#{self.incidentId}/comments/#{commentId}/edit", (data) ->
+        commentBody.html(data)
+        $("#edit_comment_" + commentId).on("ajax:success", (event, result)->
+          commentPanel.html($(result).children()))))
 
   leave: ->
     clearInterval(@commentPollInterval)

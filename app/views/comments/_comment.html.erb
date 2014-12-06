@@ -2,7 +2,8 @@
   <div class="panel-heading">
     <%= user_avatar(comment.user, 25) %>
     <%= comment.user.name %>
-    <span class="pull-right text-muted"><%= comment.created_at %></span>
+    <button class="btn btn-link btn-xs go-to-edit-comment">Edit</button>
+  <span class="pull-right text-muted"><%= comment.created_at %></span>
   </div>
   <div class="panel-body"><%= render_user_content(comment.content) %></div>
 </div>

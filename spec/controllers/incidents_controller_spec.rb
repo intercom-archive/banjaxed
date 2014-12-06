@@ -34,7 +34,7 @@ RSpec.describe IncidentsController, type: :controller do
       end
       it "assigns the last updated_at for feeds" do
         get :index, :format => 'atom'
-        expect(assigns(:updated)).to eq(closed_incident.updated_at)
+        expect(assigns(:updated).to_i).to eq(closed_incident.updated_at.to_i)
       end
     end
 

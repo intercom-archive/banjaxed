@@ -32,6 +32,10 @@ RSpec.describe IncidentsController, type: :controller do
         get :index, {}
         expect(assigns(:incidents)).to eq([incident, closed_incident])
       end
+      it "assigns the last updated_at for feeds" do
+        get :index, :format => 'atom'
+        expect(assigns(:updated).to_i).to eq(closed_incident.updated_at.to_i)
+      end
     end
 
     context "with a closed status parameter" do

@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_incident
-  # , :set_comment
-
+  
   def index
     @comments = @incident.comments.since(params[:after_id]).order(:id)
   end

@@ -27,6 +27,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
+  gem 'pry'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do

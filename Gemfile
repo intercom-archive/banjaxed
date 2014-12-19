@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.3.0'
 
 gem 'warden-github-rails', '~> 1.1.0'
-gem 'sentry-raven'
+gem 'sentry-raven', '>= 0.12.2'
 
 gem 'html-pipeline', require: 'html/pipeline'
 gem 'github-markdown', '~> 0.5', require: false

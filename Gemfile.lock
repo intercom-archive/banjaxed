@@ -200,7 +200,7 @@ DEPENDENCIES
   rspec-rails (~> 3.1.0)
   sanitize (~> 2.0)
   sass-rails (~> 4.0.3)
-  sentry-raven
+  sentry-raven (>= 0.12.2)
   shoulda-matchers
   simplecov
   spring

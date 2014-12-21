@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
     resources :incidents, except: :destroy do
       resources :comments, only: [:new, :create, :index, :show, :update, :edit]
-
       patch :status, on: :member
     end
   end
+
+  post 'pagerduty/callback' => 'pagerduty#callback'
 end

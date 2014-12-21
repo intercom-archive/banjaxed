@@ -20,3 +20,4 @@
 
 # Ignore development environment variables.
 .env
+*.swp

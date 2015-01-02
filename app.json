@@ -21,6 +21,6 @@
         "heroku-postgresql"
     ],
     "scripts": {
-        "postdeploy": "rake db:migrate"
+        "postdeploy": "rake db:schema:load"
     }
 }

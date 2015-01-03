@@ -8,15 +8,20 @@ class IncidentsController < ApplicationController
       @incidents = @incidents.where(status: params[:status])
     end
 
-    respond_to do |format|
-      format.html { render :layout => true }
-      format.atom {
-        @updated = last_updated(@incidents)
-        render :layout => false
-      }
+    # Get new updates
+    if params.key?(:recent)
+      @incidents = @incidents.where('updated_at > ?', 32.seconds.ago)
+    else
+      respond_to do |format|
+        format.html { render :layout => true }
+        format.atom {
+          @updated = last_updated(@incidents)
+          render :layout => false
+        }
 
-      # RSS feed permanently redirected to the ATOM feed
-      format.rss { redirect_to incidents_url(:format => :atom), :status => :moved_permanently }
+        # RSS feed permanently redirected to the ATOM feed
+        format.rss { redirect_to incidents_url(:format => :atom), :status => :moved_permanently }
+      end
     end
   end
 

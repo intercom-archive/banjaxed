@@ -7,7 +7,7 @@
   <%= incident_status_switcher_item(nil, "All", params[:status]) %>
 </ul>
 
-<table class="table table-striped">
+<table class="table table-striped incidents-table">
   <thead>
     <tr>
       <th>Title</th>
@@ -21,14 +21,7 @@
 
   <tbody>
     <% @incidents.each do |incident| %>
-      <tr>
-        <td><%= link_to incident.title, incident %></td>
-        <td><%= incident_severity_label(incident) %></td>
-        <td><%= incident.status %></td>
-        <td><%= incident_user_name(incident) %></td>
-        <td><%= incident.started_at %></td>
-        <td><%= incident.detected_at %></td>
-      </tr>
+      <%= render partial: "incident" , object: incident %>
     <% end %>
   </tbody>
 </table>

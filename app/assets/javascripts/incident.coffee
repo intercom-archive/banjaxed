@@ -1,16 +1,38 @@
 commentsList = null
+incidentsList = null
 
 $(document).on("page:change", ->
   commentsList.leave() if commentsList
+  incidentsList.leave() if incidentsList
   commentsEl = $("#comments-container")[0]
+  incidentsEl = $(".incidents-table")[0]
+
   if commentsEl
     commentsList = new CommentsList(commentsEl)
   else
     commentsList = null
 
+  if incidentsEl
+    incidentsList = new IncidentsList(incidentsEl)
+  else
+    incidentsList = null
+
   $('#incident-status').change ->
     $(this).closest('form').submit()
 )
+
+class IncidentsList
+  constructor: (el) ->
+    self = this
+    @incidentPollInterval = setInterval ->
+      self.loadNewIncidents()
+    , 8000
+
+  leave: ->
+    clearInterval(@incidentPollInterval)
+
+  loadNewIncidents: ->
+    $.get("./incidents.js?recent");
 
 class CommentsList
   constructor: (el) ->

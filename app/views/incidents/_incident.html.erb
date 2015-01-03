@@ -1,0 +1,8 @@
+<tr data-incident-id="<%= incident.id %>">
+    <td><%= link_to incident.title, incident %></td>
+    <td><%= incident_severity_label(incident) %></td>
+    <td><%= incident.status %></td>
+    <td><%= incident_user_name(incident) %></td>
+    <td><%= incident.started_at %></td>
+    <td><%= incident.detected_at %></td>
+</tr>

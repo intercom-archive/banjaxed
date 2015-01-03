@@ -1,0 +1,14 @@
+<% if @incidents.length > 0 %>
+    var tbody = $('.incidents-table').find('tbody');
+    <% @incidents.each do |incident| %>
+      var incidentId = '<%= incident[:id] %>',
+          match = tbody.find('[data-incident-id='+incidentId+']');
+
+      if (!match || !match.length) {
+        tbody.prepend('<%=j render incident %>');
+      } else {
+        match.replaceWith('<%=j render incident %>');
+      }
+    <% end %>
+<% end %>
+

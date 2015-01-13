@@ -9,5 +9,6 @@ class Incident < ActiveRecord::Base
   validates :user, presence: true
 
   has_many :comments
+  has_one  :pagerduty_incident
   belongs_to :user
 end

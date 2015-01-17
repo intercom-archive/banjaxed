@@ -8,27 +8,24 @@ class Pagerduty
 
   def create_or_update_incident(pagerduty_id, params)
     pincident = PagerdutyIncident.find_by(pagerduty_id: pagerduty_id)
-    begin
-      if not pincident # creates a new incident
-        incident = Incident.new params.to_hash
-        if incident.save!
-          pincident = PagerdutyIncident.new(
-            pagerduty_id: pagerduty_id,
-            incident_id: incident.id
-          )
-          pincident.save!
-        end
 
-      elsif params[:status] == 'resolved' # resolve an existing incident
-        incident = Incident.find_by(id: pincident.incident_id)
-
-        if incident and incident.status != 'resolved'
-          incident.status = 'resolved'
-          incident.save!
-        end
+    if not pincident # creates a new incident
+      incident = Incident.new params.to_hash
+      if incident.save!
+        pincident = PagerdutyIncident.new(
+          pagerduty_id: pagerduty_id,
+          incident_id: incident.id
+        )
+        pincident.save!
       end
-    rescue Exception => e
-      { error: e.message }
+
+    elsif params[:status] == 'resolved' # resolve an existing incident
+      incident = Incident.find_by(id: pincident.incident_id)
+
+      if incident and incident.status != 'resolved'
+        incident.status = 'resolved'
+        incident.save!
+      end
     end
   end
 

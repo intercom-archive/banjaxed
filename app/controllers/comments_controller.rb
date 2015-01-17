@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_incident
-  
+  after_action :post_to_pagerduty, only: :create
+
   def index
     @comments = @incident.comments.since(params[:after_id]).order(:id)
   end
@@ -42,5 +43,9 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:content)
+    end
+
+    def post_to_pagerduty
+      Pagerduty.new().post_note(@comment['incident_id'], @comment['content'])
     end
 end

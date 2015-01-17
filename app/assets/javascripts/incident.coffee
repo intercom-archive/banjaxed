@@ -3,6 +3,7 @@ commentsList = null
 $(document).on("page:change", ->
   commentsList.leave() if commentsList
   commentsEl = $("#comments-container")[0]
+
   if commentsEl
     commentsList = new CommentsList(commentsEl)
   else

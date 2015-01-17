@@ -6,14 +6,14 @@ class Pagerduty
     puser ? {user: puser} : { error: 'Pagerduty user does not exist. Run pagerduty:create_user task.' }
   end
 
-  def create_or_update_incident(params)
-    pincident = PagerdutyIncident.find_by(pagerduty_id: params[:id])
+  def create_or_update_incident(pagerduty_id, params)
+    pincident = PagerdutyIncident.find_by(pagerduty_id: pagerduty_id)
     begin
       if not pincident # creates a new incident
         incident = Incident.new params.to_hash
         if incident.save!
           pincident = PagerdutyIncident.new(
-            pagerduty_id: params[:id],
+            pagerduty_id: pagerduty_id,
             incident_id: incident[:id]
           )
           pincident.save!

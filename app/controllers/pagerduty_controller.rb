@@ -24,10 +24,9 @@ class PagerdutyController < ApplicationController
         status: incident['status'] == 'triggered' ? 'open': incident['status'],
         started_at: incident['created_on'],
         detected_at: incident['created_on'],
-        user_id: result[:user][:id],
-        id: incident['id']
+        user_id: result[:user][:id]
       }
-      pg.create_or_update_incident(data)
+      pg.create_or_update_incident(incident['id'], data)
     end
 
     head :ok

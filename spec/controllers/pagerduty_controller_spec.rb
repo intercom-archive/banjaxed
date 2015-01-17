@@ -25,7 +25,6 @@ RSpec.describe PagerdutyController, type: :controller do
       expect(PagerdutyIncident.all.length).to eq(1)
       expect(PagerdutyIncident.find_by(pagerduty_id: "PIJ90N7").incident_id).to eq(Incident.find_by(title: "45645").id)
     end
-
   end
 
   describe "on pagerduty event but no pagerduty user exists" do

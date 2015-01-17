@@ -3,7 +3,7 @@ require('net/http')
 class Pagerduty
   def get_pagerduty_user
     puser = User.find_by(github_id: 766800)
-    puser ? {user: puser} : { error: 'Pagerduty user does not exist. Run pagerduty:create_user task.' }
+    puser ? { user: puser } : { error: 'Pagerduty user does not exist. Run pagerduty:create_user task.' }
   end
 
   def create_or_update_incident(pagerduty_id, params)
@@ -26,7 +26,6 @@ class Pagerduty
           incident.status = 'resolved'
           incident.save!
         end
-
       end
     rescue Exception => e
       { error: e.message }
@@ -50,7 +49,7 @@ class Pagerduty
 
     if pg_incident
       uri = URI.parse("https://#{pg_sub_domain}.pagerduty.com/api/v1/incidents/#{pg_incident.pagerduty_id}/notes")
-      headers = { 'Content-Type'=>'application/json', 'Authorization'=> "Token token=#{pg_api_key}"}
+      headers = { 'Content-Type' => 'application/json', 'Authorization' => "Token token=#{pg_api_key}" }
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       post = Net::HTTP::Post.new(uri.path, headers)

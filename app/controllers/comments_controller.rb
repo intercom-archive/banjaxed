@@ -46,6 +46,6 @@ class CommentsController < ApplicationController
     end
 
     def post_to_pagerduty
-      Pagerduty.new().post_note(@comment['incident_id'], @comment['content'])
+      Pagerduty.new.post_note(@comment.incident_id, @comment.content)
     end
 end

@@ -1,5 +1,5 @@
-require 'rake'
 require 'rails_helper'
+require 'rake'
 require 'json'
 
 RSpec.describe PagerdutyController, type: :controller do

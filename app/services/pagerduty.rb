@@ -1,4 +1,4 @@
-require('net/http')
+require 'net/http'
 
 class Pagerduty
   def get_pagerduty_user
@@ -14,15 +14,15 @@ class Pagerduty
         if incident.save!
           pincident = PagerdutyIncident.new(
             pagerduty_id: pagerduty_id,
-            incident_id: incident[:id]
+            incident_id: incident.id
           )
           pincident.save!
         end
 
       elsif params[:status] == 'resolved' # resolve an existing incident
-        incident = Incident.find_by(id: pincident[:incident_id])
+        incident = Incident.find_by(id: pincident.incident_id)
 
-        if incident and incident[:status] != 'resolved'
+        if incident and incident.status != 'resolved'
           incident.status = 'resolved'
           incident.save!
         end

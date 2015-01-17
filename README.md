@@ -1,4 +1,4 @@
-# Banjaxed [![Build Status](https://travis-ci.org/intercom/banjaxed.svg?branch=master)](https://travis-ci.org/intercom/banjaxed) [![Code Climate](https://codeclimate.com/github/intercom/banjaxed.png)](https://codeclimate.com/github/intercom/banjaxed) [![Coverage Status](https://coveralls.io/repos/intercom/banjaxed/badge.png)](https://coveralls.io/r/intercom/banjaxed) [![Dependency Status](https://gemnasium.com/intercom/banjaxed.png)](https://gemnasium.com/intercom/banjaxed)
+# Banjaxed [![Build Status](https://travis-ci.org/intercom/banjaxed.svg?branch=master)](https://travis-ci.org/intercom/banjaxed) [![Code Climate](https://codeclimate.com/github/intercom/banjaxed/badges/gpa.svg)](https://codeclimate.com/github/intercom/banjaxed) [![Coverage Status](https://coveralls.io/repos/intercom/banjaxed/badge.svg?branch=master)](https://coveralls.io/r/intercom/banjaxed?branch=master) [![Dependency Status](https://gemnasium.com/intercom/banjaxed.svg)](https://gemnasium.com/intercom/banjaxed)
 
 Banjaxed is an incident management tool.
 

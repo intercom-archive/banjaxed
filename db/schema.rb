@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141211111121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer  "incident_id"
     t.text     "content"
     t.datetime "created_at"
@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(version: 20141211111121) do
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "incidents", force: true do |t|
-    t.string   "title"
+  create_table "incidents", force: :cascade do |t|
+    t.string   "title",       limit: 255
     t.text     "description"
-    t.string   "severity"
-    t.string   "status",      default: "open"
+    t.string   "severity",    limit: 255
+    t.string   "status",      limit: 255, default: "open"
     t.datetime "started_at"
     t.datetime "detected_at"
     t.datetime "created_at"
@@ -40,20 +40,20 @@ ActiveRecord::Schema.define(version: 20141211111121) do
 
   add_index "incidents", ["user_id"], name: "index_incidents_on_user_id", using: :btree
 
-  create_table "pagerduty_incidents", force: true do |t|
+  create_table "pagerduty_incidents", force: :cascade do |t|
     t.integer "incident_id"
-    t.string  "pagerduty_id"
+    t.string  "pagerduty_id", limit: 255
   end
 
   add_index "pagerduty_incidents", ["incident_id"], name: "index_pagerduty_incidents_on_incident_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.integer  "github_id"
-    t.string   "github_username"
-    t.string   "name"
+    t.string   "github_username", limit: 255
+    t.string   "name",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_url"
+    t.string   "avatar_url",      limit: 255
   end
 
   add_index "users", ["github_id"], name: "index_users_on_github_id", unique: true, using: :btree

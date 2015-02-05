@@ -3,7 +3,6 @@ class IncidentsController < ApplicationController
 
   def index
     @incidents = Incident.order(id: :desc)
-
     if params.key?(:status) && Incident::STATUS_VALUES.include?(params[:status])
       @incidents = @incidents.where(status: params[:status])
     end
@@ -51,7 +50,9 @@ class IncidentsController < ApplicationController
   end
 
   def status
+    prev_status=@incident.status_was
     if @incident.update(params.permit(:status))
+      Action.create(:user_id=>current_user.id,:incident_id=>@incident.id, :data => {:user_name=> current_user.name, :id=>@incident.id,:action_type=>"status changed",:from=>prev_status,:to=>@incident.status,:time=>Time.now.utc})
       redirect_to @incident, notice: 'Incident status successfully updated.'
     else
       redirect_to @incident, flash: { error: 'Incident status could not be updated!' }

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :incidents
   has_many :comments
+  has_many :actions
 
   def self.create_or_update_from_github_user(github_user)
     self.find_or_initialize_by(github_id: github_user.id).tap do |user|

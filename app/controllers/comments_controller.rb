@@ -18,7 +18,9 @@ class CommentsController < ApplicationController
 
   def update
      @comment = @incident.comments.find(params[:id])
+     comment_prev = @comment.content_was
      if @comment.update(comment_params)
+       Action.create(:user_id=>current_user.id,:incident_id=>@comment.incident_id, :data => {:user_name=> current_user.name, :id=>@comment.id,:action_type=>"comment edited",:from=>comment_prev,:to=>@comment.content,:time=>Time.now.utc})
        render @comment, layout: false
      else
        render :edit, layout: false
@@ -31,6 +33,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       head :ok
+      Action.create(:user_id=>current_user.id,:incident_id=>@comment.incident_id, :data => {:user_name=> current_user.name, :id=>@comment.id,:action_type=>"comment create",:from=>'',:to=>@comment.content,:time=>Time.now.utc})
     else
       head :unprocessable_entity
     end

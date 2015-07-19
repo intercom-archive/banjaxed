@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:new, :create, :index, :show, :update, :edit]
       patch :status, on: :member
     end
+
+    resource :actions, :path => "/actions/:incident_id", :only => [:show],as: 'actions_show'
   end
 
   post 'pagerduty/callback' => 'pagerduty#callback'

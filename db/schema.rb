@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211111121) do
+ActiveRecord::Schema.define(version: 20150204202154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "action_type"
+    t.text     "data"
+    t.integer  "incident_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "incident_id"
@@ -27,10 +36,10 @@ ActiveRecord::Schema.define(version: 20141211111121) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "incidents", force: :cascade do |t|
-    t.string   "title",       limit: 255
+    t.string   "title"
     t.text     "description"
-    t.string   "severity",    limit: 255
-    t.string   "status",      limit: 255, default: "open"
+    t.string   "severity"
+    t.string   "status",      default: "open"
     t.datetime "started_at"
     t.datetime "detected_at"
     t.datetime "created_at"
@@ -42,18 +51,18 @@ ActiveRecord::Schema.define(version: 20141211111121) do
 
   create_table "pagerduty_incidents", force: :cascade do |t|
     t.integer "incident_id"
-    t.string  "pagerduty_id", limit: 255
+    t.string  "pagerduty_id"
   end
 
   add_index "pagerduty_incidents", ["incident_id"], name: "index_pagerduty_incidents_on_incident_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "github_id"
-    t.string   "github_username", limit: 255
-    t.string   "name",            limit: 255
+    t.string   "github_username"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_url",      limit: 255
+    t.string   "avatar_url"
   end
 
   add_index "users", ["github_id"], name: "index_users_on_github_id", unique: true, using: :btree

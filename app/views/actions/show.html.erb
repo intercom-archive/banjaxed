@@ -1,0 +1,22 @@
+<h1 class="pull-left">Incident's history</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Action type</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Changed by</th>
+    <th>Changed at</th>
+  </tr>
+  </thead>
+
+  <tbody>
+      <% @navigation.each do |action| %>
+          <%= render partial: 'action', :locals => {action: action} %>
+      <% end %>
+      </tbody>
+
+</table>
+
+
+

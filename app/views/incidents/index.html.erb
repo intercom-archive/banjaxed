@@ -14,14 +14,16 @@
       <th>Severity</th>
       <th>Status</th>
       <th>Opened by</th>
+
       <th>Started at</th>
       <th>Detected at</th>
+      <th>History</th>
     </tr>
   </thead>
 
   <tbody>
     <% @incidents.each do |incident| %>
-      <%= render partial: 'incident', incident: incident %>
+      <%= render partial: 'incident', :locals => {incident: incident} %>
     <% end %>
   </tbody>
 </table>
